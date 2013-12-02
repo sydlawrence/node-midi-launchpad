@@ -1,83 +1,362 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Node-launchpad by sydlawrence</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/main.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<head>
+  <title>Launchpad docs</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <a href="https://github.com/sydlawrence/node-launchpad"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
 
-  </head>
-  <body>
+  <div id="container">
+    <div id="background"></div>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>Launchpad</h1>
+                  <p>A simple node module to use the <a href='http://uk.novationmusic.com/midi-controllers-digital-dj/launchpad' target="_blank">Novation Launchpad</a>.</p>
+                  <p>Add any bugs to the <a href='https://github.com/sydlawrence/node-launchpad/issues' target='_blank'>issues page on github</a>.</p>
+                  <pre>npm install launchpad</pre>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>require the module and set the midi port to use</p>
 
-      <header>
-        <h1>Node-launchpad</h1>
-        <p>A simple node module for the Novation Launchpad</p>
-      </header>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="keyword">var</span> midiConnector = require(<span class="string">'launchpad'</span>).connect(midiport);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>wait for the connector to be ready</p>
 
-      <div id="banner">
-        <span id="logo"></span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>midiConnector.on(<span class="string">"ready"</span>,<span class="function"><span class="keyword">function</span><span class="params">(launchpad)</span> {</span>
+  console.log(<span class="string">"Launchpad ready"</span>);
+});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <h2 id="colors">Colors</h2>
 
-        <a href="https://github.com/sydlawrence/node-launchpad" class="button fork"><strong>View On GitHub</strong></a>
-        <div class="downloads">
-          <span>Downloads:</span>
-          <ul>
-            <li><a href="https://github.com/sydlawrence/node-launchpad/zipball/master" class="button">ZIP</a></li>
-            <li><a href="https://github.com/sydlawrence/node-launchpad/tarball/master" class="button">TAR</a></li>
-          </ul>
-        </div>
-      </div><!-- end banner -->
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>launchpad.colors.off;
+launchpad.colors.red.low;
+launchpad.colors.red.medium;
+launchpad.colors.red.high;
+launchpad.colors.green.low;
+launchpad.colors.green.medium;
+launchpad.colors.green.high;
+launchpad.colors.orange.low;
+launchpad.colors.orange.medium;
+launchpad.colors.orange.high;
+launchpad.colors.yellow.low;
+launchpad.colors.yellow.medium;
+launchpad.colors.yellow.high;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <h2 id="functions">functions</h2>
 
-    <div class="wrapper">
-      <nav>
-        <ul></ul>
-      </nav>
-      <section>
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+            </div>
+            
+            
+        </li>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+        <li id="section-5a">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5a">&#182;</a>
+              </div>
+<p>turn all buttons off</p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>launchpad.clear();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>light up all buttons</p>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>launchpad.allLight(color);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>get a button</p>
 
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="keyword">var</span> button = launchpad.getButton(<span class="number">1</span>,<span class="number">1</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>light up a button</p>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>button.light(color);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>display a chatacter on the launchpad</p>
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>launchpad.displayCharacter(<span class="string">"S"</span>, color);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>display a string by flashing between the characters</p>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>launchpad.displayString(<span class="string">"@sydlawrence"</span>, color);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>use the launchpad as a scrolling display</p>
 
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>launchpad.scrollString(<span class="string">"@sydlawrence"</span>, color);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>render specific colors in specific buttons all at once</p>
+<ul>
+<li>0 or &quot; &quot; for &quot;off&quot;</li>
+<li>y for yellow</li>
+<li>r for red</li>
+<li>g for green</li>
+<li>o for orange</li>
+</ul>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>launchpad.renderBytes(
+  [
+    [<span class="string">"0"</span>,<span class="string">"g"</span>,<span class="string">"G"</span>,<span class="string">" "</span>,<span class="string">" "</span>,<span class="string">"g"</span>,<span class="string">"G"</span>,<span class="string">"0"</span>],
+    [<span class="string">"g"</span>,<span class="string">" "</span>,<span class="string">"G"</span>,<span class="string">" "</span>,<span class="string">" "</span>,<span class="string">"g"</span>,<span class="string">" "</span>,<span class="string">"G"</span>],
+    [<span class="string">"g"</span>,<span class="string">"g"</span>,<span class="string">"g"</span>,<span class="string">" "</span>,<span class="string">" "</span>,<span class="string">"g"</span>,<span class="string">"g"</span>,<span class="string">"g"</span>],
+    [<span class="string">" "</span>,<span class="string">" "</span>,<span class="string">" "</span>,<span class="string">" "</span>,<span class="string">"g"</span>,<span class="string">" "</span>,<span class="string">" "</span>,<span class="string">" "</span>],
+    [<span class="string">" "</span>,<span class="string">" "</span>,<span class="string">" "</span>,<span class="string">" "</span>,<span class="string">"g"</span>,<span class="string">" "</span>,<span class="string">" "</span>,<span class="string">" "</span>],
+    [<span class="string">"g"</span>,<span class="string">" "</span>,<span class="string">" "</span>,<span class="string">"g"</span>,<span class="string">"g"</span>,<span class="string">" "</span>,<span class="string">" "</span>,<span class="string">"g"</span>],
+    [<span class="string">" "</span>,<span class="string">"g"</span>,<span class="string">" "</span>,<span class="string">" "</span>,<span class="string">" "</span>,<span class="string">" "</span>,<span class="string">"g"</span>,<span class="string">" "</span>],
+    [<span class="string">" "</span>,<span class="string">" "</span>,<span class="string">"G"</span>,<span class="string">"g"</span>,<span class="string">"g"</span>,<span class="string">"g"</span>,<span class="string">" "</span>,<span class="string">" "</span>],</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p><em>the top special row</em></p>
 
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    [<span class="string">"r"</span>,<span class="string">"r"</span>,<span class="string">"r"</span>,<span class="string">" "</span>,<span class="string">" "</span>,<span class="string">"r"</span>,<span class="string">"r"</span>,<span class="string">"r"</span>]
+  ]
+);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <h2 id="events">Events</h2>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-      <footer>
-        <p>Project maintained by <a href="https://github.com/sydlawrence">sydlawrence</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
-      </footer>
-    </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-              <script type="text/javascript">
+            </div>
+            
+            <div class="content"></div>
+            
+        </li>
+
+        <li id="section-14a">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14a">&#182;</a>
+              </div>
+<p>button press</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>button.on(<span class="string">"press"</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+  console.log(<span class="string">"ouch, my eye              -_ಠ"</span>);
+});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>button release</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>button.on(<span class="string">"release"</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+  console.log(<span class="string">"thanks, that's better     ಠ_ಠ"</span>);
+});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>any press</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>launchpad.on(<span class="string">"press"</span>, <span class="function"><span class="keyword">function</span><span class="params">(btn)</span> {</span>
+  console.log(<span class="string">"Pressed: "</span>+
+      <span class="string">"x:"</span>        +btn.x          +<span class="string">", "</span>+
+      <span class="string">"y:"</span>        +btn.y          +<span class="string">", "</span>+
+      <span class="string">"state:"</span>    +btn.getState() +<span class="string">", "</span>+
+      <span class="string">"special:"</span>  +btn.special
+  );
+});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <p>any release</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>launchpad.on(<span class="string">"release"</span>, <span class="function"><span class="keyword">function</span><span class="params">(btn)</span> {</span>
+  console.log(<span class="string">"Released: "</span>+
+      <span class="string">"x:"</span>        +btn.x          +<span class="string">", "</span>+
+      <span class="string">"y:"</span>        +btn.y          +<span class="string">", "</span>+
+      <span class="string">"state:"</span>    +btn.getState() +<span class="string">", "</span>+
+      <span class="string">"special:"</span>  +btn.special
+  );
+});</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+    <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
           </script>
@@ -87,6 +366,5 @@ $ git checkout gh-pages
             pageTracker._trackPageview();
             } catch(err) {}
           </script>
-
-  </body>
+</body>
 </html>
