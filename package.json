@@ -13,7 +13,7 @@
     "url" : "http://github.com/sydlawrence/node-midi-launchpad/issues",
     "email" : "sydlawrence+node-midi-launchpad@gmail.com"
   },
-  "repository": "https://github.com/sydlawrence/node-midi-launchpad",
+  "repository": "http://github.com/sydlawrence/node-midi-launchpad",
   "author": {
     "name" : "Syd Lawrence",
     "email" : "sydlawrence+node-midi-launchpad@gmail.com",
