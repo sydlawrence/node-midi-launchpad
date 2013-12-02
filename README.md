@@ -4,12 +4,12 @@ Launchpad Node Module
 
 Installation
 ------------
-```
+```js
 npm install launchpad
 ```
 Usage
 -----
-```
+```js
 var midiConnector = require('launchpad').connect(midiport);
 
 // wait for the connector to be ready
@@ -38,33 +38,38 @@ Functions
 ---------
 
 turn off all the lights
-```
+```js
 launchpad.clear();
 ```
 
 light up all buttons
-```
+```js
 launchpad.allLight(color);
 ```
+
 display a chatacter on the launchpad
-```
+```js
 launchpad.displayCharacter("S", color);
 ```
+
 display a string by flashing between the characters
-```
+```js
 launchpad.displayString("@sydlawrence", color);
 ```
+
 use the launchpad as a scrolling display
-```
+```js
 launchpad.scrollString("@sydlawrence", color);
 ```
+
 render specific colors in specific buttons all at once
 - 0 or " " for "off"
 - y for yellow
 - r for red
 - g for green
 - o for orange
-```
+
+```js
 launchpad.renderBytes(
   [
     ["0","g","G"," "," ","g","G","0"],
@@ -79,38 +84,49 @@ launchpad.renderBytes(
   ]
 );
 ```
+
 Buttons
 -------
 
 get a button 
-```
+```js
 var button = launchpad.getButton(1,1);
 ```
+
 light up a button
-```
+```js
 button.light(color);
 ```
+
 get the current color
-```
+```js
 button.getState();
 ```
-```
+
+```js
 button.x; // the x co-ord
 button.y; // the y co-ord
 button.special; // if the button is "special"
 ```
+
 Events
 ------
-```
+```js
 button.on("press", callback);
 button.on("release", callback);
 ```
-```
+
+```js
 launchpad.on("press", callback);
 launchpad.on("release", callback);
 ```
 
+Credits
+=======
+
+&copy; 2013 Syd Lawrence, We Make Awesome Sh
 ```
+
  /\___/\
 ( o   o )
 (  =^=  )
