@@ -1,6 +1,8 @@
 Launchpad Node Module: midi-launchpad
 =====================================
 
+![Sample](https://raw.github.com/sydlawrence/node-midi-launchpad/gh-pages/public/example.gif)
+
 Docs
 ----
 
