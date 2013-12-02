@@ -146,3 +146,4 @@ e   e  e eeee    eeeeeee eeeee eeeee eeee    eeeee e   e e  eeeee
 88  8  8 88      88 8  8 88  8 88  8 88        88  88  8 88    88
 88ee8ee8 88ee    88 8  8 88  8 88ee8 88ee      88  88  8 88 8ee88
 ```
+[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/c0082c609b5ded571004d45891986c73 "githalytics.com")](http://githalytics.com/sydlawrence/node-midi-launchpad)
