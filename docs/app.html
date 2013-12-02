@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Launchpad docs</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <a href="https://github.com/sydlawrence/node-launchpad"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+  <div id="container">
+    <div id="background"></div>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>Launchpad</h1>
+                  <p>A simple node module to use the <a href='http://uk.novationmusic.com/midi-controllers-digital-dj/launchpad' target="_blank">Novation Launchpad</a>.</p>
+                  <p>Add any bugs to the <a href='https://github.com/sydlawrence/node-launchpad/issues' target='_blank'>issues page on github</a>.</p>
+                  <pre>npm install launchpad</pre>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>require the module and set the midi port to use</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="keyword">var</span> midiConnector = require(<span class="string">'launchpad'</span>).connect(midiport);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>wait for the connector to be ready</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>midiConnector.on(<span class="string">"ready"</span>,<span class="function"><span class="keyword">function</span><span class="params">(launchpad)</span> {</span>
+  console.log(<span class="string">"Launchpad ready"</span>);
+});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <h2 id="colors">Colors</h2>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>launchpad.colors.off;
+launchpad.colors.red.low;
+launchpad.colors.red.medium;
+launchpad.colors.red.high;
+launchpad.colors.green.low;
+launchpad.colors.green.medium;
+launchpad.colors.green.high;
+launchpad.colors.orange.low;
+launchpad.colors.orange.medium;
+launchpad.colors.orange.high;
+launchpad.colors.yellow.low;
+launchpad.colors.yellow.medium;
+launchpad.colors.yellow.high;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <h2 id="functions">functions</h2>
+
+            </div>
+            
+            
+        </li>
+
+        <li id="section-5a">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5a">&#182;</a>
+              </div>
+<p>turn all buttons off</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>launchpad.clear();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>light up all buttons</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>launchpad.allLight(color);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>get a button</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="keyword">var</span> button = launchpad.getButton(<span class="number">1</span>,<span class="number">1</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>light up a button</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>button.light(color);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>display a chatacter on the launchpad</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>launchpad.displayCharacter(<span class="string">"S"</span>, color);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>display a string by flashing between the characters</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>launchpad.displayString(<span class="string">"@sydlawrence"</span>, color);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>use the launchpad as a scrolling display</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>launchpad.scrollString(<span class="string">"@sydlawrence"</span>, color);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>render specific colors in specific buttons all at once</p>
+<ul>
+<li>0 or &quot; &quot; for &quot;off&quot;</li>
+<li>y for yellow</li>
+<li>r for red</li>
+<li>g for green</li>
+<li>o for orange</li>
+</ul>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>launchpad.renderBytes(
+  [
+    [<span class="string">"0"</span>,<span class="string">"g"</span>,<span class="string">"G"</span>,<span class="string">" "</span>,<span class="string">" "</span>,<span class="string">"g"</span>,<span class="string">"G"</span>,<span class="string">"0"</span>],
+    [<span class="string">"g"</span>,<span class="string">" "</span>,<span class="string">"G"</span>,<span class="string">" "</span>,<span class="string">" "</span>,<span class="string">"g"</span>,<span class="string">" "</span>,<span class="string">"G"</span>],
+    [<span class="string">"g"</span>,<span class="string">"g"</span>,<span class="string">"g"</span>,<span class="string">" "</span>,<span class="string">" "</span>,<span class="string">"g"</span>,<span class="string">"g"</span>,<span class="string">"g"</span>],
+    [<span class="string">" "</span>,<span class="string">" "</span>,<span class="string">" "</span>,<span class="string">" "</span>,<span class="string">"g"</span>,<span class="string">" "</span>,<span class="string">" "</span>,<span class="string">" "</span>],
+    [<span class="string">" "</span>,<span class="string">" "</span>,<span class="string">" "</span>,<span class="string">" "</span>,<span class="string">"g"</span>,<span class="string">" "</span>,<span class="string">" "</span>,<span class="string">" "</span>],
+    [<span class="string">"g"</span>,<span class="string">" "</span>,<span class="string">" "</span>,<span class="string">"g"</span>,<span class="string">"g"</span>,<span class="string">" "</span>,<span class="string">" "</span>,<span class="string">"g"</span>],
+    [<span class="string">" "</span>,<span class="string">"g"</span>,<span class="string">" "</span>,<span class="string">" "</span>,<span class="string">" "</span>,<span class="string">" "</span>,<span class="string">"g"</span>,<span class="string">" "</span>],
+    [<span class="string">" "</span>,<span class="string">" "</span>,<span class="string">"G"</span>,<span class="string">"g"</span>,<span class="string">"g"</span>,<span class="string">"g"</span>,<span class="string">" "</span>,<span class="string">" "</span>],</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p><em>the top special row</em></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    [<span class="string">"r"</span>,<span class="string">"r"</span>,<span class="string">"r"</span>,<span class="string">" "</span>,<span class="string">" "</span>,<span class="string">"r"</span>,<span class="string">"r"</span>,<span class="string">"r"</span>]
+  ]
+);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <h2 id="events">Events</h2>
+
+            </div>
+            
+            <div class="content"></div>
+            
+        </li>
+
+        <li id="section-14a">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14a">&#182;</a>
+              </div>
+<p>button press</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>button.on(<span class="string">"press"</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+  console.log(<span class="string">"ouch, my eye              -_ಠ"</span>);
+});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>button release</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>button.on(<span class="string">"release"</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+  console.log(<span class="string">"thanks, that's better     ಠ_ಠ"</span>);
+});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>any press</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>launchpad.on(<span class="string">"press"</span>, <span class="function"><span class="keyword">function</span><span class="params">(btn)</span> {</span>
+  console.log(<span class="string">"Pressed: "</span>+
+      <span class="string">"x:"</span>        +btn.x          +<span class="string">", "</span>+
+      <span class="string">"y:"</span>        +btn.y          +<span class="string">", "</span>+
+      <span class="string">"state:"</span>    +btn.getState() +<span class="string">", "</span>+
+      <span class="string">"special:"</span>  +btn.special
+  );
+});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <p>any release</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>launchpad.on(<span class="string">"release"</span>, <span class="function"><span class="keyword">function</span><span class="params">(btn)</span> {</span>
+  console.log(<span class="string">"Released: "</span>+
+      <span class="string">"x:"</span>        +btn.x          +<span class="string">", "</span>+
+      <span class="string">"y:"</span>        +btn.y          +<span class="string">", "</span>+
+      <span class="string">"state:"</span>    +btn.getState() +<span class="string">", "</span>+
+      <span class="string">"special:"</span>  +btn.special
+  );
+});</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

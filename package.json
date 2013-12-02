@@ -1,0 +1,15 @@
+{
+  "name": "launchpad",
+  "version": "0.1.0",
+  "description": "A simple node module for use with the Novation Launchpad",
+  "main": "app.js",
+  "repository": "",
+  "author": "Syd Lawrence",
+  "license": "BSD",
+  "dependencies" : {
+    "backbone": ">=1.1.0",
+    "underscore": ">=1.5.2",
+    "midi": ">=0.7.0"
+  }
+
+}
