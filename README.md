@@ -1,6 +1,5 @@
-
-Launchpad Node Module
-=====================
+Launchpad Node Module: midi-launchpad
+=====================================
 
 Docs
 ----
