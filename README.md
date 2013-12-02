@@ -2,15 +2,20 @@
 Launchpad Node Module
 =====================
 
+Docs
+----
+
+Docs are available at: http://sydlawrence.github.io/node-midi-launchpad/
+
 Installation
 ------------
 ```js
-npm install launchpad
+npm install midi-launchpad
 ```
 Usage
 -----
 ```js
-var midiConnector = require('launchpad').connect(midiport);
+var midiConnector = require('midi-launchpad').connect(midiport);
 
 // wait for the connector to be ready
 midiConnector.on("ready",function(launchpad) {
