@@ -10,14 +10,13 @@
   "main": "app.js",
   "homepage": "http://sydlawrence.github.io/node-midi-launchpad/",
   "bugs": {
-    "url" : "http://github.com/sydlawrence/node-midi-launchpad/issues"
+    "url" : "http://github.com/sydlawrence/node-midi-launchpad/issues",
     "email" : "sydlawrence+node-midi-launchpad@gmail.com"
   },
   "repository": "https://github.com/sydlawrence/node-midi-launchpad",
-  "author": "Syd Lawrence",
   "author": {
-    "name" : "Syd Lawrence"
-    "email" : "sydlawrence+node-midi-launchpad@gmail.com"
+    "name" : "Syd Lawrence",
+    "email" : "sydlawrence+node-midi-launchpad@gmail.com",
     "url" : "http://sydlawrence.com/"
   },
   "license": "BSD",
