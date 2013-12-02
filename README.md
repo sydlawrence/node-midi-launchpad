@@ -78,15 +78,15 @@ render specific colors in specific buttons all at once
 ```js
 launchpad.renderBytes(
   [
-    ["0","g","G"," "," ","g","G","0"],
-    ["g"," ","G"," "," ","g"," ","G"],
-    ["g","g","g"," "," ","g","g","g"],
-    [" "," "," "," ","g"," "," "," "],
-    [" "," "," "," ","g"," "," "," "],
-    ["g"," "," ","g","g"," "," ","g"],
-    [" ","g"," "," "," "," ","g"," "],
-    [" "," ","G","g","g","g"," "," "],
-    ["r","r","r"," "," ","r","r","r"] // the special row at the top
+    " gg  gg ",
+    "g g  g g",
+    "ggg  ggg",
+    "    g   ",
+    "    g   ",
+    "g  gg  g",
+    " g    g ",
+    "  gggg  ",
+    "rrr  rrr"  // the special row at the top
   ]
 );
 ```
