@@ -1,6 +1,6 @@
 {
   "name": "midi-launchpad",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A simple node module for use with the Novation Launchpad",
   "keywords": [
     "midi",

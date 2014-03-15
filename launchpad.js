@@ -104,7 +104,6 @@ var Launchpad = function(port, initAnimation) {
         // Reset the state on all buttons
         for(var x = 0; x < 9; x++) {
             for(var y = 0; y < 9; y++) {
-
                 this._grid[x][y].light(color);
             }
         }
@@ -168,12 +167,16 @@ var Launchpad = function(port, initAnimation) {
                         for(var y = 0; y < 9; y++) {
                             (function(x,y){
                                 var t = setTimeout(function() {
+                                    try {
                                         that._grid[x][y].light(i);
                                         if (i === 0 && x === 8 && y === 8) {
                                             that.trigger("ready", that);
                                             that.ready = true;
                                         }
-
+                                    }
+                                    catch (e) {
+                                        console.log(x+" "+y);
+                                    }
                                 },(x+y)*100);
                             })(x,y);
                         }
@@ -202,7 +205,7 @@ var Launchpad = function(port, initAnimation) {
             that.receiveMessage(deltaTime, message);
         });
 
-        console.log("running launchpad: "+this.output.getPortName(port)+" ("+port+")");
+        console.log("running launchpad: "+this.output.getPortName(port));
 
         this.initialize();
     };
@@ -253,23 +256,15 @@ Launchpad.prototype.displayCharacter = function(letter, color) {
   this.renderBytes(bytes, color);
 };
 
-
-Launchpad.prototype.displayingStringTimeouts = [];
 Launchpad.prototype.displayString = function(str, delay, callback, color) {
-
   if (delay === undefined) delay = 500;
   var that = this;
-  for (var k in that.displayingStringTimeouts){
-    clearTimeout(that.displayingStringTimeouts[k]);
-  }
   for (var j = 0; j < str.length; j++) {
     (function(j){
-      that.displayingStringTimeouts.push(setTimeout(function() {
+      setTimeout(function() {
         that.displayCharacter(str[j], color);
-        if (j+1 === str.length && callback !== undefined){
-            that.displayingStringTimeouts.push(setTimeout(callback, delay));
-        }
-      }, j*delay));
+        if (j+1 === str.length && callback !== undefined) setTimeout(callback, delay);
+      }, j*delay);
     })(j);
   }
 };
