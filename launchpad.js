@@ -7,8 +7,23 @@ var midi = require('midi');
 /*
  * Launchpad
  * Represents the launchpad as a whole
+ *
+ * if the application uses midi anywhere else, it must supply it's own midi.input and midi.output
+ * failing to do this and having multiple instances lead node.js to crash unexpectedly
  */
-var Launchpad = function(port, initAnimation) {
+var Launchpad = function(port, initAnimation, midiInput, midiOutput) {
+
+	if (midiInput === undefined) {
+		this.input = new midi.input();
+	} else {
+		this.input = midiInput;
+	}
+	if (midiOutput === undefined) {
+		this.output = new midi.output();
+	} else {
+		this.output = midiOutput;
+	}
+	
     if (initAnimation === undefined) initAnimation = true;
     var name = 0;
     var row = 0;
@@ -189,10 +204,6 @@ var Launchpad = function(port, initAnimation) {
 
     this.ready = false;
     this.init = function() {
-            // Set up a new output.
-        this.output = new midi.output();
-        // Set up a new input.
-        this.input = new midi.input();
 
         this.createButtons();
 
@@ -367,6 +378,6 @@ exports.colors = Launchpad.prototype.colors = {
 
 exports.Launchpad = Launchpad;
 
-exports.connect = function(port, initAnimation) {
-    return new Launchpad(port, initAnimation);
+exports.connect = function(port, initAnimation, midiInput, midiOutput) {
+    return new Launchpad(port, initAnimation, midiInput, midiOutput);
 };
