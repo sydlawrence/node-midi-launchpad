@@ -16,13 +16,11 @@ var Launchpad = function(port, initAnimation, midiInput, midiOutput) {
 	if (midiInput === undefined) {
 		this.input = new midi.input();
 	} else {
-		console.log("using supplied input");
 		this.input = midiInput;
 	}
 	if (midiOutput === undefined) {
 		this.output = new midi.output();
 	} else {
-		console.log("using supplied output");
 		this.output = midiOutput;
 	}
 	
