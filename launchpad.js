@@ -8,7 +8,7 @@ var midi = require('midi');
  * Launchpad
  * Represents the launchpad as a whole
  */
-var Launchpad = function(port, initAnimation) {
+var Launchpad = function(inputPort, outputPort, initAnimation) {
     if (initAnimation === undefined) initAnimation = true;
     var name = 0;
     var row = 0;
@@ -197,20 +197,20 @@ var Launchpad = function(port, initAnimation) {
         this.createButtons();
 
         // Open the first available output port.
-        this.output.openPort(port);
-        this.input.openPort(port);
+        this.output.openPort(outputPort);
+        this.input.openPort(inputPort);
 
         // Configure a callback.
         this.input.on('message', function(deltaTime, message) {
             that.receiveMessage(deltaTime, message);
         });
 
-        console.log("running launchpad: "+this.output.getPortName(port));
+        console.log("running launchpad: "+this.output.getPortName(outputPort));
 
         this.initialize();
     };
 
-    console.log("setting up Launchpad on port:"+port);
+    console.log("setting up Launchpad on port:"+inputPort+"/"+outputPort);
     this.init();
 
 };
@@ -367,6 +367,6 @@ exports.colors = Launchpad.prototype.colors = {
 
 exports.Launchpad = Launchpad;
 
-exports.connect = function(port, initAnimation) {
-    return new Launchpad(port, initAnimation);
+exports.connect = function(inputPort, outputPort, initAnimation) {
+    return new Launchpad(inputPort, outputPort, initAnimation);
 };
