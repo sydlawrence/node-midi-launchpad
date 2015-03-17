@@ -24,7 +24,6 @@ var Launchpad = function(port, initAnimation) {
     this._grid = [];
     var that = this;
 
-
     this.specials = {
         0:{ 8: ["right","vol"] },
         1:{ 8: ["right","pan"] },
@@ -60,8 +59,6 @@ var Launchpad = function(port, initAnimation) {
             }
         }
     };
-
-
 
     /*
      * Gets a button object from this._grid
@@ -154,7 +151,6 @@ var Launchpad = function(port, initAnimation) {
             return;
         }
 
-
         var colors = [
             3, 48, 18, 49, 0
         ];
@@ -215,7 +211,30 @@ var Launchpad = function(port, initAnimation) {
 
 };
 
-
+Launchpad.prototype.renderByte = function(x, y, color, byte) {
+  
+    byte = byte.toLowerCase();
+    switch (byte) {
+        case '1':
+            break;
+        case 'r':
+            color = exports.colors.red.high;
+            break;  
+        case 'o':
+            color = exports.colors.orange.high;
+            break;
+        case 'y':
+            color = exports.colors.yellow.high;
+            break;
+        case 'g':
+            color = exports.colors.green.high;
+            break;
+        default:
+            color = exports.colors.off;
+            break;
+    } 
+    this._grid[y][x].light(color);
+};
 
 Launchpad.prototype.renderBytes = function(bytes, color) {
     if (bytes === undefined) return;
@@ -226,27 +245,7 @@ Launchpad.prototype.renderBytes = function(bytes, color) {
                 console.log("Button not found: x:"+x+", y:"+y);
                 return;
             }
-            byt[y] = byt[y].toLowerCase();
-            switch (byt[y]) {
-                case "1":
-                    this._grid[y][x].light(color);
-                    break;
-                case "r":
-                    this._grid[y][x].light(exports.colors.red.high);
-                    break;
-                case "o":
-                    this._grid[y][x].light(exports.colors.orange.high);
-                    break;
-                case "y":
-                    this._grid[y][x].light(exports.colors.yellow.high);
-                    break;
-                case "g":
-                    this._grid[y][x].light(exports.colors.green.high);
-                    break;
-                case "0":
-                    this._grid[y][x].light(exports.colors.off);
-                    break;
-            }
+            this.renderByte(x, y, color,  byt[y]);
         }
     }
 };
@@ -276,7 +275,7 @@ Launchpad.prototype.scrollString = function(str,delay, color, onFinished) {
         bytes.push(["0","0","0","0","0","0","0","0"]);
     }
     this.scrollBytes(bytes, delay, color, onFinished);
-}
+};
 
 Launchpad.prototype.colorize = function(bytes, colorStr, nullColorStr) {
     for (var i = 0; i < bytes.length; i++) {
@@ -288,11 +287,11 @@ Launchpad.prototype.colorize = function(bytes, colorStr, nullColorStr) {
         bytes[i] = str;
     }
     return bytes;
-}
+};
 
 Launchpad.prototype.clearScroll = function() {
     clearInterval(this.scrollInterval);
-}
+};
 
 Launchpad.prototype.scrollBytes = function(bytes, delay, color, onFinished) {
     var perScreen = 8;
@@ -338,8 +337,6 @@ Launchpad.prototype.scrollBytes = function(bytes, delay, color, onFinished) {
     }, delay);
 
 };
-
-
 
 exports.colors = Launchpad.prototype.colors = {
     off: 0,
