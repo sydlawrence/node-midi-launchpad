@@ -119,7 +119,7 @@ var Launchpad = function(port, initAnimation) {
 
 
         // On or off?
-        var state = (parseInt(msg[2], 10) == 127) ? true : false;
+        var state = (parseInt( msg[ 2 ], 10 ) == 127);
 
         // Emit an event
         if(state) {
@@ -330,7 +330,7 @@ Launchpad.prototype.scrollBytes = function(bytes, delay, color, onFinished) {
         overallBytes.push(toAdd);
     }
 
-    this.scrollInterval;
+    this.scrollInterval = null;
     var that = this;
 
     if (delay === undefined) delay = 200;
