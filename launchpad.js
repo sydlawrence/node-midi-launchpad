@@ -1,3 +1,5 @@
+'use strict';
+
 var _ = require("underscore");
 var Backbone = require("backbone");
 var Button = require("./button").Button;
@@ -117,7 +119,7 @@ var Launchpad = function(port, initAnimation) {
 
 
         // On or off?
-        var state = (parseInt(msg[2], 10) == 127) ? true : false;
+        var state = (parseInt( msg[ 2 ], 10 ) == 127);
 
         // Emit an event
         if(state) {
@@ -192,34 +194,55 @@ var Launchpad = function(port, initAnimation) {
 
         this.createButtons();
 
-        // Open the first available output port.
-        this.output.openPort(port);
-        this.input.openPort(port);
+        if (port !== undefined) {
+            // Open the specified port
+            this.output.openPort(port);
+            this.input.openPort(port);
+            console.log('running launchpad on port ' + port + this.output.getPortName(port));
+            
+        } else {
+            // Detect Launchpad by checking the port names
+            let openLaunchpadPort = function(io, name) {
+                return (new Array(io.getPortCount())).fill(0)
+                    .map((el,ix) => ( { name: io.getPortName(ix), port: ix } ))
+                    .filter(desc => desc.name.indexOf('Launchpad') >= 0)
+                    .some(desc => {
+                        console.log(`Opening ${name} port ${desc.port}: ${desc.name}`);
+                        io.openPort(desc.port);
+                        return true;
+                    });
+            };
+            
+            let openedOutput = openLaunchpadPort(this.output, 'output'),
+                openedInput = openLaunchpadPort(this.input, 'input');
+            
+            if (!openedInput) throw new Error('Could not detect Launchpad on input ports.');
+            if (!openedOutput) throw new Error('Could not detect Launchpad on output ports.')
+        }
+
 
         // Configure a callback.
         this.input.on('message', function(deltaTime, message) {
             that.receiveMessage(deltaTime, message);
         });
 
-        console.log("running launchpad: "+this.output.getPortName(port));
-
         this.initialize();
     };
 
-    console.log("setting up Launchpad on port:"+port);
+    console.log('setting up Launchpad on ' + (port ? `port ${port}` : 'auto-detected port'));
     this.init();
 
 };
 
 Launchpad.prototype.renderByte = function(x, y, color, byte) {
-  
+
     byte = byte.toLowerCase();
     switch (byte) {
         case '1':
             break;
         case 'r':
             color = exports.colors.red.high;
-            break;  
+            break;
         case 'o':
             color = exports.colors.orange.high;
             break;
@@ -232,7 +255,7 @@ Launchpad.prototype.renderByte = function(x, y, color, byte) {
         default:
             color = exports.colors.off;
             break;
-    } 
+    }
     this._grid[y][x].light(color);
 };
 
@@ -297,6 +320,8 @@ Launchpad.prototype.scrollBytes = function(bytes, delay, color, onFinished) {
     var perScreen = 8;
     var charPos = 0;
     var overallBytes = [];
+    var interval = null;
+    
     for (var i= 0; i < bytes[0].length; i++) {
         var toAdd = "";
         for (var j = 0; j < bytes.length;j++) {
@@ -305,7 +330,7 @@ Launchpad.prototype.scrollBytes = function(bytes, delay, color, onFinished) {
         overallBytes.push(toAdd);
     }
 
-    this.scrollInterval;
+    this.scrollInterval = null;
     var that = this;
 
     if (delay === undefined) delay = 200;

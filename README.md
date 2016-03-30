@@ -16,7 +16,7 @@ npm install midi-launchpad
 Usage
 -----
 ```js
-var midiConnector = require('midi-launchpad').connect(midiport);
+var midiConnector = require('midi-launchpad').connect();
 
 // wait for the connector to be ready
 midiConnector.on("ready",function(launchpad) {
@@ -42,6 +42,12 @@ Colors
 
 Functions
 ---------
+
+connect to Launchpad
+```js
+connector = require('midi-launchpad').connect() // Automatically detect Launchpad
+connector = require('midi-launchpad').connect(portNumber) // Manually specify port number
+```
 
 turn off all the lights
 ```js
