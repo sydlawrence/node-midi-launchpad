@@ -212,14 +212,14 @@ var Launchpad = function(port, initAnimation) {
 };
 
 Launchpad.prototype.renderByte = function(x, y, color, byte) {
-  
+
     byte = byte.toLowerCase();
     switch (byte) {
         case '1':
             break;
         case 'r':
             color = exports.colors.red.high;
-            break;  
+            break;
         case 'o':
             color = exports.colors.orange.high;
             break;
@@ -232,8 +232,22 @@ Launchpad.prototype.renderByte = function(x, y, color, byte) {
         default:
             color = exports.colors.off;
             break;
-    } 
+    }
     this._grid[y][x].light(color);
+};
+
+Launchpad.prototype.renderColors = function(colors) {
+    if (colors === undefined) return;
+        for (var x = 0; x < colors.length; x++) {
+        var colorColumn = colors[x];
+        for (var y = 0; y < colorColumn.length; y++) {
+            if (!this._grid[y][x]) {
+                console.log("Button not found: x:"+x+", y:"+y);
+                return;
+            }
+            this._grid[y][x].light(colorColumn[y]);
+        }
+    }
 };
 
 Launchpad.prototype.renderBytes = function(bytes, color) {
