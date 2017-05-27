@@ -296,6 +296,7 @@ Launchpad.prototype.clearScroll = function() {
 Launchpad.prototype.scrollBytes = function(bytes, delay, color, onFinished) {
     var perScreen = 8;
     var charPos = 0;
+    var interval = 0;
     var overallBytes = [];
     for (var i= 0; i < bytes[0].length; i++) {
         var toAdd = "";
